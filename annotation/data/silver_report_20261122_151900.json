@@ -1,0 +1,25 @@
+{
+  "items": 30,
+  "ok": 28,
+  "failed": 2,
+  "fail_reasons": {
+    "A:- | B:json_parse_failed: 我们需要根据对话历史来构建下一个输出。用户提供了一条阿语文本，标题": 1,
+    "A:- | B:json_parse_failed: 我们需要处理用户提供的一段阿拉伯语文本，标题是“أبرز تقني": 1
+  },
+  "model_a": "qwen-plus",
+  "model_b": "deepseek-v4-flash-0731",
+  "elapsed_sec": 116.1,
+  "field_agreement_mean": 0.6836,
+  "confidence_mean": 0.7714,
+  "accepted_silver": 10,
+  "acceptance_rate": 0.3571,
+  "review_needed": 18,
+  "agree_brand_matrix": 0.6429,
+  "agree_role_type": 0.8929,
+  "agree_referent_level": 0.6071,
+  "agree_primary_frame": 0.5357,
+  "agree_sentiment_5scale": 0.7857,
+  "agree_aspect_category": 0.4286,
+  "agree_misreading_type": 0.8929,
+  "plan_gate_auto_accept_ge_0.85_conf": true
+}

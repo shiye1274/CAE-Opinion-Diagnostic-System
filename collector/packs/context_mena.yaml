@@ -1,0 +1,84 @@
+# 中东在地化场景词包 Context_MENA（海湾核心痛点/文化语境）
+# 来自规划文档表 3-5 / 3.5 节
+# 用途：与品牌词组合生成"品牌 × 痛点"聚焦查询，也是 L2 方面级情感标注的种子词
+
+context_mena:
+  - id: heat_ac
+    name: 高温与空调（海湾第一痛点）
+    queries:
+      en: ["summer heat", "50 degrees", "\"air conditioning\""]
+      ar: ["\"حرارة الخليج\"", "تكييف", "\"درجات حرارة\""]
+      zh: ["高温", "空调制冷"]
+    aspect: THERMAL_AC
+
+  - id: desert
+    name: 沙漠与越野工况
+    queries:
+      en: ["desert", "\"dune bashing\"", "off-road"]
+      ar: ["صحراء", "\"دون باشينج\"", "البر"]
+      zh: ["沙漠", "越野"]
+    aspect: CLIMATE_GEO
+
+  - id: battery_fire
+    name: 电池安全/自燃疑虑
+    queries:
+      en: ["\"battery fire\"", "\"EV fire\"", "\"battery safety\""]
+      ar: ["اشتعال", "\"سلامة البطارية\"", "\"حريق البطارية\""]
+      zh: ["自燃", "电池安全"]
+    aspect: SAFETY_QUALITY
+
+  - id: battery_range
+    name: 电池/续航
+    queries:
+      en: ["\"Blade Battery\"", "battery range", "range anxiety"]
+      ar: ["بطارية", "مدى", "\"قلق المدى\""]
+      zh: ["刀片电池", "续航"]
+    aspect: BATTERY_RANGE
+
+  - id: charging
+    name: 充电与基建
+    queries:
+      en: ["charging", "\"charging network\"", "\"fast charger\""]
+      ar: ["\"شواحن سريعة\"", "\"محطات الشحن\"", "شحن"]
+      zh: ["充电", "充电桩"]
+    aspect: CHARGING_NET
+
+  - id: resale
+    name: 保值率与二手车
+    queries:
+      en: ["\"resale value\"", "used EV", "second hand"]
+      ar: ["\"سعر إعادة البيع\"", "حراج", "\"سيارة مستعملة\""]
+      zh: ["保值率", "二手车"]
+    aspect: RESALE_VALUE
+
+  - id: dealer_wakil
+    name: 本地代理商（Wakil）与售后
+    queries:
+      en: ["dealership", "after sales", "warranty"]
+      ar: ["الوكيل", "صيانة", "ضمان"]
+      zh: ["代理商", "售后"]
+    aspect: DEALER_SERVICE
+
+  - id: religion_family
+    name: 宗教与家庭场景（斋月/家庭/伊斯兰金融）
+    queries:
+      en: ["Ramadan", "family car", "\"Islamic finance\""]
+      ar: ["رمضان", "عائلي", "\"تمويل إسلامي\"", "مرابحة"]
+      zh: ["斋月", "家庭用车"]
+    aspect: RELIGION_CUSTOM
+
+  - id: data_privacy
+    name: 数据安全
+    queries:
+      en: ["\"data privacy\"", "\"data security\""]
+      ar: ["\"خصوصية البيانات\"", "\"أمن البيانات\""]
+      zh: ["数据安全"]
+    aspect: DATA_PRIVACY
+
+  - id: smart_cabin
+    name: 智能座舱/车机
+    queries:
+      en: ["smart cockpit", "infotainment", "\"voice assistant\""]
+      ar: ["\"الكابينة الذكية\"", "شاشة"]
+      zh: ["智能座舱", "车机"]
+    aspect: SMART_CABIN

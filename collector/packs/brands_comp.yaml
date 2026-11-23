@@ -1,0 +1,52 @@
+# 对照品牌词包 EntityPack Brand_Comp（美欧日韩 + 中东本土投资品牌）
+# 来自规划文档表 3-1
+
+brands_comp:
+  - id: tesla
+    name: Tesla
+    queries:
+      en: ["Tesla", "\"Tesla Model Y\"", "\"Tesla Model 3\""]
+      ar: ["تسلا", "\"تسلا موديل\""]
+      zh: ["特斯拉"]
+
+  - id: lucid
+    name: Lucid（沙特 PIF 控股·地缘对照）
+    queries:
+      en: ["Lucid", "\"Lucid Air\"", "\"Lucid Motors\""]
+      ar: ["لوسيد", "\"موتورز لوسيد\""]
+      zh: ["Lucid"]
+
+  - id: ceer
+    name: Ceer（沙特首个本土电动车品牌）
+    queries:
+      en: ["Ceer", "\"Ceer Motors\""]
+      ar: ["سير", "\"شركة سير\""]
+      zh: ["Ceer"]
+
+  - id: toyota
+    name: Toyota（日系神车对照）
+    queries:
+      en: ["Toyota", "\"Toyota Camry\"", "Toyota hybrid"]
+      ar: ["تويوتا", "\"تويوتا كامري\""]
+      zh: ["丰田"]
+
+  - id: hyundai_kia
+    name: Hyundai / Kia（韩系对照）
+    queries:
+      en: ["Hyundai", "Kia"]
+      ar: ["هيونداي", "كيا"]
+      zh: ["现代", "起亚"]
+
+  - id: mercedes_bmw
+    name: Mercedes / BMW（欧系豪华对照）
+    queries:
+      en: ["\"Mercedes EQ\"", "\"BMW i\""]
+      ar: ["مرسيدس", "\"بي إم دبليو\""]
+      zh: ["奔驰", "宝马"]
+
+  - id: vw
+    name: Volkswagen（欧系大众）
+    queries:
+      en: ["Volkswagen", "\"VW ID\""]
+      ar: ["فولكس فاجن"]
+      zh: ["大众"]

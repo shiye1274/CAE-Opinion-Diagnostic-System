@@ -1,0 +1,21 @@
+# 国家/城市词包 CountryPack（GCC 六国核心圈 + 泛中东辐射圈）
+
+countries:
+  - { code: SA, name: 沙特, queries: { en: ["Saudi Arabia", "Riyadh", "Jeddah"], ar: ["السعودية", "الرياض", "جدة"], zh: ["沙特", "利雅得"] }, gdelt: sourcecountry:SA }
+  - { code: AE, name: 阿联酋, queries: { en: ["UAE", "Dubai", "Abu Dhabi"], ar: ["الإمارات", "دبي", "أبوظبي"], zh: ["阿联酋", "迪拜"] }, gdelt: sourcecountry:AE }
+  - { code: QA, name: 卡塔尔, queries: { en: ["Qatar", "Doha"], ar: ["قطر", "الدوحة"], zh: ["卡塔尔", "多哈"] }, gdelt: sourcecountry:QA }
+  - { code: KW, name: 科威特, queries: { en: ["Kuwait"], ar: ["الكويت"], zh: ["科威特"] }, gdelt: sourcecountry:KW }
+  - { code: OM, name: 阿曼, queries: { en: ["Oman", "Muscat"], ar: ["عمان", "مسقط"], zh: ["阿曼"] }, gdelt: sourcecountry:OM }
+  - { code: BH, name: 巴林, queries: { en: ["Bahrain", "Manama"], ar: ["البحرين"], zh: ["巴林"] }, gdelt: sourcecountry:BH }
+  - { code: EG, name: 埃及, queries: { en: ["Egypt", "Cairo"], ar: ["مصر", "القاهرة"], zh: ["埃及"] }, gdelt: sourcecountry:EG }
+  - { code: JO, name: 约旦, queries: { en: ["Jordan", "Amman"], ar: ["الأردن", "عمان"], zh: ["约旦"] }, gdelt: sourcecountry:JO }
+
+# GDELT 语言过滤语法
+gdelt_langs:
+  ar: sourcelang:arabic
+  en: sourcelang:english
+  zh: sourcelang:chinesevan
+
+# GDELT 国别过滤代码（试采期逐个核验；无效代码由适配器自动降级去国别过滤）
+# 实测：AE 有效；SA/QA/KW/OM/BH 待试采确认；GDELT 错误 "Invalid/Unsupported Country" 会自动降级
+gdelt_fips_or: "(sourcecountry:SA OR sourcecountry:AE OR sourcecountry:QA OR sourcecountry:KW OR sourcecountry:OM OR sourcecountry:BH)"

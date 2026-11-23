@@ -1,0 +1,84 @@
+# 中国品牌词包 EntityPack Brand_CN
+# 中/阿/英三语检索锚点（含拼写变体），来自规划文档表 3-1 / 表 6
+# 用法：每品牌一个条目，queries 可直接拼进通道查询式
+
+brands_cn:
+  - id: byd
+    name: BYD（比亚迪·核心锚点）
+    weight: 0.30
+    models: [Seal, "Atto 3", Shark, Han, Tang, Denza, 腾势, Yangwang, 仰望, Fangchengbao, 方程豹]
+    queries:
+      en: ["BYD", "\"Build Your Dreams\"", "\"BYD Seal\"", "\"BYD Atto 3\""]
+      ar: ["\"بي واي دي\"", "\"بي.واي.دي\"", "\"باي دي\"", "\"سكيل بيلد يور دريمز\""]
+      zh: ["比亚迪", "比亚迪海洋网"]
+
+  - id: nio
+    name: NIO（蔚来）
+    weight: null
+    queries:
+      en: ["NIO", "\"NIO House Dubai\""]
+      ar: ["نيو", "\"شركة نيو للسيارات\""]
+      zh: ["蔚来"]
+
+  - id: xpeng
+    name: XPeng（小鹏）
+    queries:
+      en: ["XPeng", "Xpeng G6", "Xpeng G9"]
+      ar: ["\"إكس بنغ\"", "\"اكس بنج\""]
+      zh: ["小鹏"]
+
+  - id: zeekr
+    name: Zeekr（极氪）
+    queries:
+      en: ["Zeekr", "Zeekr 001", "Zeekr 009"]
+      ar: ["زيكر", "\"زيكر 001\""]
+      zh: ["极氪"]
+
+  - id: geely
+    name: Geely（吉利）
+    queries:
+      en: ["Geely", "Geely Coolray"]
+      ar: ["جيلي"]
+      zh: ["吉利"]
+
+  - id: chery
+    name: Chery（奇瑞）
+    queries:
+      en: ["Chery", "Chery Tiggo"]
+      ar: ["شيري", "\"شيري تيجو\""]
+      zh: ["奇瑞"]
+
+  - id: jetour
+    name: Jetour（捷途·中东热度极高）
+    queries:
+      en: ["Jetour", "Jetour T2", "Jetour X70"]
+      ar: ["جيتور", "\"جيتور تي 2\""]
+      zh: ["捷途"]
+
+  - id: mg
+    name: MG Motor（上汽名爵）
+    queries:
+      en: ["\"MG Motor\"", "MG ZS", "MG4"]
+      ar: ["\"إم جي\"", "\"مجموعة إم جي\""]
+      zh: ["名爵"]
+
+  - id: changan
+    name: Changan（长安）
+    queries:
+      en: ["Changan", "Changan UNI-T"]
+      ar: ["شانجان"]
+      zh: ["长安"]
+
+  - id: haval_gwm
+    name: Haval / GWM（哈弗·长城）
+    queries:
+      en: ["Haval", "GWM", "\"Great Wall Motor\""]
+      ar: ["هافال", "\"جريت وول\""]
+      zh: ["哈弗", "长城汽车"]
+
+  - id: hongqi
+    name: Hongqi（红旗）
+    queries:
+      en: ["Hongqi"]
+      ar: ["\"هونغ تشي\"", "هونجتشي"]
+      zh: ["红旗"]

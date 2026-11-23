@@ -1,0 +1,675 @@
+- id: vision2030
+  name: Saudi Vision 2030
+  layer: L1
+  language: ar
+  country: SA
+  adapter: manual
+  search_url: null
+  verify: true
+  rate: 5.0
+  channels:
+  - site
+  note: 官网 PDF/HTML + OCR；政策基准线
+  owner: A
+- id: uae_moei
+  name: UAE Ministry of Energy & Infrastructure
+  layer: L1
+  language: en
+  country: AE
+  adapter: manual
+  search_url: null
+  verify: true
+  rate: 5.0
+  channels:
+  - site
+  note: 愿景与基建政策
+  owner: A
+- id: saso
+  name: 沙特标准局 SASO（EV 准入标准）
+  layer: L1
+  language: ar
+  country: SA
+  adapter: manual
+  search_url: null
+  verify: true
+  rate: 5.0
+  channels:
+  - site
+  owner: A
+- id: kahramaa
+  name: 卡塔尔 Kahramaa (Tarsheed)
+  layer: L1
+  language: en
+  country: QA
+  adapter: manual
+  search_url: null
+  verify: true
+  rate: 5.0
+  channels:
+  - site
+  owner: A
+- id: kapsarc
+  name: KAPSARC 能源智库
+  layer: L1
+  language: en
+  country: SA
+  adapter: manual
+  search_url: null
+  verify: true
+  rate: 5.0
+  channels:
+  - site
+  owner: A
+- id: agsiw
+  name: AGSIW 海湾智库
+  layer: L1
+  language: en
+  country: US
+  adapter: manual
+  search_url: null
+  verify: true
+  rate: 5.0
+  channels:
+  - site
+  owner: A
+- id: carnegie_me
+  name: Carnegie Middle East
+  layer: L1
+  language: en
+  country: LB
+  adapter: manual
+  search_url: null
+  verify: true
+  rate: 5.0
+  channels:
+  - site
+  owner: A
+- id: alarabiya_ar
+  name: Al Arabiya العربية
+  layer: L2
+  language: ar
+  country: SA
+  adapter: site_search
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  - site
+  note: 重点源；站内搜索模板试采期核验
+  owner: A
+- id: asharqnews
+  name: Asharq News
+  layer: L2
+  language: ar
+  country: AE
+  adapter: site_search
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  owner: A
+- id: alkhaleej
+  name: Al Khaleej الخليج
+  layer: L2
+  language: ar
+  country: AE
+  adapter: site_search
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  - site
+  owner: A
+- id: albayan
+  name: Al Bayan البيان
+  layer: L2
+  language: ar
+  country: AE
+  adapter: site_search
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  owner: A
+- id: okaz
+  name: Okaz عكاض
+  layer: L2
+  language: ar
+  country: SA
+  adapter: site_search
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  owner: A
+- id: alriyadh
+  name: Al Riyadh الرياض
+  layer: L2
+  language: ar
+  country: SA
+  adapter: site_search
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  owner: A
+- id: aleqtisadiah
+  name: Al Eqtisadiah الاقتصادية
+  layer: L2
+  language: ar
+  country: SA
+  adapter: site_search
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  owner: A
+- id: alyaum
+  name: Al Yaum اليوم
+  layer: L2
+  language: ar
+  country: SA
+  adapter: site_search
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  owner: A
+- id: cnbc_arabia
+  name: CNBC Arabia
+  layer: L2
+  language: ar
+  country: AE
+  adapter: site_search
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  owner: A
+- id: argaam
+  name: Argaam أرقام
+  layer: L2
+  language: ar
+  country: SA
+  adapter: site_search
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  owner: A
+- id: aljazeera_ar
+  name: Al Jazeera العربية
+  layer: L2
+  language: ar
+  country: QA
+  adapter: site_search
+  search_url: https://www.aljazeera.net/search/{q}
+  verify: true
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  - site
+  owner: A
+- id: asharqalawsat
+  name: Asharq Al-Awsat الشرق الأوسط
+  layer: L2
+  language: ar
+  country: GB
+  adapter: site_search
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  owner: A
+- id: gulfnews
+  name: Gulf News
+  layer: L2
+  language: en
+  country: AE
+  adapter: site_search
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  - site
+  owner: B
+  note: ROBOTS_BLOCK_SEARCH：同上
+  verified_by: member_B
+- id: khaleejtimes
+  name: Khaleej Times
+  layer: L2
+  language: en
+  country: AE
+  adapter: site_search
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  - site
+  owner: B
+  note: ROBOTS_BLOCK_SEARCH：同上
+  verified_by: member_B
+- id: thenational
+  name: The National
+  layer: L2
+  language: en
+  country: AE
+  adapter: site_search
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  - site
+  owner: B
+  note: ROBOTS_BLOCK_SEARCH：同上
+  verified_by: member_B
+- id: arabianbusiness
+  name: Arabian Business
+  layer: L2
+  language: en
+  country: AE
+  adapter: site_search
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  owner: B
+  note: NEEDS_BROWSER：需浏览器渲染，二期 Playwright
+  verified_by: member_B
+- id: arabnews
+  name: Arab News
+  layer: L2
+  language: en
+  country: SA
+  adapter: site_search
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  - site
+  note: ROBOTS_BLOCK_SEARCH：robots 禁搜索接口，走 gdelt/google_news
+  owner: B
+  verified_by: member_B
+- id: saudigazette
+  name: Saudi Gazette
+  layer: L2
+  language: en
+  country: SA
+  adapter: site_search
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  owner: B
+  note: ROBOTS_BLOCK_SEARCH：robots 禁搜索(B人工复核20261120)，?s= 探测为误判
+- id: zawya
+  name: Zawya
+  layer: L2
+  language: en
+  country: AE
+  adapter: site_search
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - gdelt
+  - google_news
+  note: RECORD_ONLY_PAYWALL：付费墙只记录元数据
+  owner: B
+  verified_by: member_B
+- id: agbi
+  name: AGBI
+  layer: L2
+  language: en
+  country: AE
+  adapter: site_search
+  search_url: null
+  verify: false
+  rate: 3.0
+  channels:
+  - gdelt
+  - google_news
+  note: RECORD_ONLY_PAYWALL：付费墙只记录元数据
+  owner: B
+  verified_by: member_B
+- id: meed
+  name: MEED
+  layer: L2
+  language: en
+  country: AE
+  adapter: site_search
+  search_url: null
+  verify: false
+  rate: 3.0
+  channels:
+  - gdelt
+  note: RECORD_ONLY_PAYWALL：强付费墙，不爬
+  owner: B
+  verified_by: member_B
+- id: arabgt
+  name: ArabGT عرب جي تي（中东第一汽车媒体）
+  layer: L3
+  language: ar
+  country: JO
+  adapter: wpjson
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - site
+  - google_news
+  note: wp-json 通道（B 20261120 实测有效：/?s= 为栏目页误判，wp-json 返回真实搜索结果+全文）
+  owner: B
+  config:
+    search_base: https://arabgt.com
+    per_page: 50
+- id: almuraba
+  name: Almuraba المربع نت
+  layer: L3
+  language: ar
+  country: SA
+  adapter: wpjson
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - site
+  - google_news
+  owner: B
+  note: wp-json 通道（B 20261120 实测有效：/?s= 为栏目页误判，wp-json 返回真实搜索结果+全文）
+  config:
+    search_base: https://almuraba.net
+    per_page: 50
+- id: saudishift
+  name: Saudi Shift سعودي شفت
+  layer: L3
+  language: ar
+  country: SA
+  adapter: site_search
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - site
+  - google_news
+  owner: B
+  note: NEEDS_BROWSER：同上
+  verified_by: member_B
+- id: striveme
+  name: StriveME
+  layer: L3
+  language: ar
+  country: SA
+  adapter: site_search
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - site
+  - google_news
+  owner: B
+  note: NEEDS_BROWSER：同上
+  verified_by: member_B
+- id: moterat
+  name: Moterat متمردون
+  layer: L3
+  language: ar
+  country: SA
+  adapter: site_search
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - site
+  - google_news
+  owner: B
+  note: NEEDS_BROWSER：同上
+  verified_by: member_B
+- id: drivearabia
+  name: DriveArabia
+  layer: L3
+  language: en
+  country: AE
+  adapter: site_search
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - site
+  - google_news
+  owner: B
+  note: NEEDS_BROWSER：同上
+  verified_by: member_B
+- id: yallamotor
+  name: YallaMotor
+  layer: L3
+  language: en
+  country: AE
+  adapter: site_search
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - site
+  - google_news
+  owner: B
+  note: NEEDS_BROWSER：同上
+  verified_by: member_B
+- id: carswitch
+  name: CarSwitch 评测专栏
+  layer: L3
+  language: en
+  country: AE
+  adapter: site_search
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - site
+  - google_news
+  owner: B
+  note: NEEDS_BROWSER：/?s=返回列表页，有效文章0篇(B人工复核20261120)
+- id: youtube_kw_ar
+  name: YouTube 阿语车评关键词搜索
+  layer: L4
+  language: ar
+  country: GCC
+  adapter: yt_dlp
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - api
+  config:
+    mode: keyword_search
+    results_per_query: 12
+    subs:
+    - ar
+    - en
+  note: yt-dlp 提字幕；无字幕视频后续 Whisper 转写（独立脚本）
+  owner: B
+- id: yt_channel_arabgt
+  name: ArabGT 官方频道
+  layer: L4
+  language: ar
+  country: JO
+  adapter: yt_dlp
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - api
+  config:
+    mode: channel
+    handle: '@ArabGT'
+    max_videos: 10
+  note: handle 试采期核验
+  owner: B
+- id: yt_channel_suhaib
+  name: Suhaib Shashaa شعب شاشعة
+  layer: L4
+  language: ar
+  country: SA
+  adapter: yt_dlp
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - api
+  config:
+    mode: keyword_search
+    results_per_query: 8
+  owner: B
+  note: 原 handle @SuhaibShashaa 无效(2026-11-20实测)，改关键词模式；如需频道须人工核验正确 handle
+- id: yt_channel_kutbi
+  name: Hasan Kutbi حسن كتبي
+  layer: L4
+  language: ar
+  country: SA
+  adapter: yt_dlp
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - api
+  config:
+    mode: channel
+    handle: '@HasanKutbi'
+    max_videos: 10
+  owner: B
+- id: yt_channel_scb
+  name: Supercar Blondie
+  layer: L4
+  language: en
+  country: AE
+  adapter: yt_dlp
+  search_url: null
+  verify: true
+  rate: 2.0
+  channels:
+  - api
+  config:
+    mode: channel
+    handle: '@supercarblondie'
+    max_videos: 10
+  owner: B
+- id: reddit_dubai
+  name: r/dubai
+  layer: L5
+  language: en
+  country: AE
+  adapter: reddit
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - api
+  config:
+    subreddits:
+    - dubai
+  owner: B
+- id: reddit_saudi
+  name: r/saudiarabia
+  layer: L5
+  language: en
+  country: SA
+  adapter: reddit
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - api
+  config:
+    subreddits:
+    - saudiarabia
+  owner: B
+- id: reddit_dph
+  name: r/DubaiPetrolHeads
+  layer: L5
+  language: en
+  country: AE
+  adapter: reddit
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - api
+  config:
+    subreddits:
+    - DubaiPetrolHeads
+  owner: B
+- id: reddit_qatar
+  name: r/Qatar
+  layer: L5
+  language: en
+  country: QA
+  adapter: reddit
+  search_url: null
+  verify: false
+  rate: 2.0
+  channels:
+  - api
+  config:
+    subreddits:
+    - Qatar
+  owner: B
+- id: haraj
+  name: Haraj حراج（沙特最大二手/讨论社区）
+  layer: L5
+  language: ar
+  country: SA
+  adapter: site_search
+  search_url: null
+  verify: true
+  rate: 3.0
+  channels:
+  - site
+  note: 方言 UGC 主力；试采期核验其搜索接口与 robots
+  owner: A
+- id: x_twitter
+  name: X (Twitter)
+  layer: L5
+  language: ar
+  country: GCC
+  adapter: manual
+  search_url: null
+  verify: false
+  rate: 0
+  channels: []
+  note: 官方 API 收费；一期不强依赖，二期视预算接入
+  owner: A

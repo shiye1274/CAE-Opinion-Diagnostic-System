@@ -1,0 +1,6 @@
+requests>=2.31
+PyYAML>=6.0
+beautifulsoup4>=4.12
+yt-dlp>=2024.4.9
+langdetect>=1.0.9
+mmh3>=4.0

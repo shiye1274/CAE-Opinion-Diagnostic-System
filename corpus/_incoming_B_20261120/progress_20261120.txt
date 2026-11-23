@@ -1,0 +1,11 @@
+﻿date=20261120 (progress snapshot; built from files, no re-run of run_daily)
+googlenews_cumulative_items=1292
+youtube_api_comments_total=7733
+youtube_comments_containing_brand=693 (9.0%)
+youtube_comments_under_brand_title_videos=5428 (70.2%)
+youtube_comments_lang: arabic=3577 english=3436 other=720
+media_almuraba_fulltext_articles=767 (of which text_len<200: 8)
+media_arabgt_articles=34 (of which text_len<200: 0)
+reddit_status=stopped_http_403
+ytdlp_status=stopped_3_failures_possible_block
+note: collected full-text/comment bodies are stored as items.jsonl only; no html/json/vtt in this pack

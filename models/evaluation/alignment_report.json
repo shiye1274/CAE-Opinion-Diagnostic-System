@@ -1,0 +1,19 @@
+{
+  "train_pairs": 720,
+  "test_pairs": 180,
+  "model": "intfloat/multilingual-e5-small",
+  "epochs": 4,
+  "batch": 16,
+  "baseline": {
+    "R@1": 0.2833,
+    "R@5": 0.6333,
+    "R@10": 0.8222
+  },
+  "finetuned": {
+    "R@1": 0.4611,
+    "R@5": 0.85,
+    "R@10": 0.95
+  },
+  "gate_R10_ge_0.80": true,
+  "checkpoint": "D:\\桌面\\语料库论文\\models\\checkpoints\\e5-align-v1"
+}

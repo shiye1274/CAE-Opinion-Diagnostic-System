@@ -1,0 +1,34 @@
+{
+  "dataset": "arbml/ArSAS",
+  "n_eval": 4000,
+  "label_set": [
+    "mixed",
+    "negative",
+    "neutral",
+    "positive"
+  ],
+  "models": {
+    "CAMeL-Lab/bert-base-arabic-camelbert-mix-sentiment": {
+      "acc": 0.8535,
+      "macro_f1": 0.6547,
+      "macro_f1_3class_subset": 0.8997,
+      "n_3class_subset": 3773,
+      "model_labels": [
+        "negative",
+        "neutral",
+        "positive"
+      ]
+    },
+    "Ammar-alhaj-ali/arabic-MARBERT-sentiment": {
+      "acc": 0.583,
+      "macro_f1": 0.4288,
+      "macro_f1_3class_subset": 0.588,
+      "n_3class_subset": 3773,
+      "model_labels": [
+        "negative",
+        "neutral",
+        "positive"
+      ]
+    }
+  }
+}

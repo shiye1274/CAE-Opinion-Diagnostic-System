@@ -1,0 +1,5 @@
+﻿date=20261119
+googlenews_new_today=1069 (title+snippet level, not full text); errors=2; total=1069
+reddit_new_posts=0; new_comments=0; status=stopped_http_403; UGC_total(posts+comments)=0
+verify: ROBOTS_BLOCK_SEARCH=5; NEEDS_BROWSER=6; RECORD_ONLY_PAYWALL=3; OK=3
+not done this week: YouTube, vertical-media full text

@@ -1,0 +1,11 @@
+# 采集原始快照与本地库（体积大，不入 Git）
+corpus/raw/
+corpus/meta/*.sqlite
+*.pyc
+__pycache__/
+node_modules/
+models/checkpoints/
+collector/audit/run_*.jsonl
+collector/audit/试采证据日志_*.csv
+collector/audit/gate_report_*.json
+.env

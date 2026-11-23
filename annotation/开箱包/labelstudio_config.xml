@@ -1,0 +1,132 @@
+<View>
+  <!-- GreenSilk-MENA 标注配置 v1.1（对应规划文档表 4-1 三层 28 维的核心子集）
+       v1.1 变更：移除无效的 visibleWhen 属性（部分 LS 版本导致保存校验失败、界面字段残缺）
+       导入方式：Label Studio → Settings → Labeling Interface → Code → 粘贴本文件 → Save
+       预期：右侧面板应显示 ①–⑧ 共 8 组字段 + 原文高亮"证据句"标签 -->
+
+  <Header value="$title" />
+  <Text name="text" value="$text_clean" highlightColor="#FFB366" />
+  <Labels name="quote" toName="text" fillOpacity="0.25" strokeColor="gold">
+    <Label value="证据句(误读/关键句)" background="#FFD700"/>
+  </Labels>
+
+  <!-- ========== L1 文档宏观层 ========== -->
+  <Header value="① 品牌与角色（可多选）" size="18"/>
+  <Choices name="brand_matrix" toName="text" choice="multiple">
+    <Choice value="BYD 比亚迪"/>
+    <Choice value="NIO 蔚来"/>
+    <Choice value="XPeng 小鹏"/>
+    <Choice value="Zeekr 极氪"/>
+    <Choice value="Geely 吉利"/>
+    <Choice value="Chery 奇瑞"/>
+    <Choice value="Jetour 捷途"/>
+    <Choice value="MG 名爵"/>
+    <Choice value="Changan 长安"/>
+    <Choice value="Haval/GWM 哈弗"/>
+    <Choice value="Hongqi 红旗"/>
+    <Choice value="Tesla 特斯拉"/>
+    <Choice value="Lucid"/>
+    <Choice value="Ceer"/>
+    <Choice value="Toyota 丰田"/>
+    <Choice value="Hyundai/Kia 现代起亚"/>
+    <Choice value="其他(备注栏写)"/>
+  </Choices>
+
+  <Header value="主导中国品牌的角色（单选）" size="16"/>
+  <Choices name="role_type" toName="text">
+    <Choice value="CORE_SUBJECT 主角"/>
+    <Choice value="BENCHMARK 对照标杆"/>
+    <Choice value="PASSING_MENTION 顺带提及"/>
+    <Choice value="NOT_APPLICABLE 未提中国品牌"/>
+  </Choices>
+
+  <Header value="② 指涉层级（单选）" size="18"/>
+  <Choices name="referent_level" toName="text">
+    <Choice value="CORPORATE 企业形象"/>
+    <Choice value="PRODUCT_BRAND 产品品牌"/>
+    <Choice value="SPECIFIC_MODEL 具体车型"/>
+    <Choice value="INDUSTRY_CHAIN 产业链"/>
+    <Choice value="FINANCIAL 股价财报"/>
+    <Choice value="INFRASTRUCTURE 充换电与电网基建"/>
+    <Choice value="MIXED 多层混合"/>
+    <Choice value="OTHER 其他"/>
+  </Choices>
+
+  <Header value="③ 主导框架（单选）" size="18"/>
+  <Choices name="primary_frame" toName="text">
+    <Choice value="TECH_LEADERSHIP 技术领先"/>
+    <Choice value="PRICE_ADVANTAGE 价格优势"/>
+    <Choice value="SAFETY_RECALL 安全召回"/>
+    <Choice value="AFTER_SALES 售后服务"/>
+    <Choice value="ENVIRONMENTAL 环保可持续"/>
+    <Choice value="POLICY_GEO 政策地缘"/>
+    <Choice value="CULTURAL_CONFLICT 文化冲突"/>
+    <Choice value="MARKET_COMPETITION 市场竞争"/>
+    <Choice value="LOCALIZATION_INVEST 本土化合资建厂"/>
+    <Choice value="LUXURY_STATUS 身份象征豪华"/>
+    <Choice value="OTHER 其他"/>
+  </Choices>
+
+  <Header value="次要框架（单选，可空）" size="16"/>
+  <Choices name="secondary_frame" toName="text" showInline="true">
+    <Choice value="TECH_LEADERSHIP"/>
+    <Choice value="PRICE_ADVANTAGE"/>
+    <Choice value="SAFETY_RECALL"/>
+    <Choice value="AFTER_SALES"/>
+    <Choice value="ENVIRONMENTAL"/>
+    <Choice value="POLICY_GEO"/>
+    <Choice value="CULTURAL_CONFLICT"/>
+    <Choice value="MARKET_COMPETITION"/>
+    <Choice value="LOCALIZATION_INVEST"/>
+    <Choice value="LUXURY_STATUS"/>
+    <Choice value="OTHER"/>
+    <Choice value="无"/>
+  </Choices>
+
+  <Header value="④ 对中国品牌的情感（5 级单选）" size="18"/>
+  <Choices name="sentiment_5scale" toName="text">
+    <Choice value="+2 强烈推崇"/>
+    <Choice value="+1 正面肯定"/>
+    <Choice value="0 客观中立"/>
+    <Choice value="-1 质疑担忧"/>
+    <Choice value="-2 强烈批评/抵制"/>
+  </Choices>
+
+  <!-- ========== L2 方面层（可多选） ========== -->
+  <Header value="⑤ 评价方面（可多选）" size="18"/>
+  <Choices name="aspect_category" toName="text" choice="multiple">
+    <Choice value="BATTERY_RANGE 电池续航"/>
+    <Choice value="THERMAL_AC 高温散热空调"/>
+    <Choice value="SMART_CABIN 智能座舱车机"/>
+    <Choice value="AUTONOMOUS_DRIVING 智驾"/>
+    <Choice value="EXTERIOR_SPACE 外观空间"/>
+    <Choice value="PRICE_FINANCE 售价金融"/>
+    <Choice value="RESALE_VALUE 二手保值"/>
+    <Choice value="CHARGING_NET 充电网络"/>
+    <Choice value="DEALER_SERVICE 本地代理商售后"/>
+    <Choice value="SAFETY_QUALITY 安全做工"/>
+    <Choice value="DATA_PRIVACY 数据安全"/>
+    <Choice value="BRAND_PRESTIGE 品牌面子"/>
+    <Choice value="CLIMATE_GEO 沙漠高温工况"/>
+    <Choice value="RELIGION_CUSTOM 宗教习俗"/>
+    <Choice value="GEO_ECONOMIC 石油经济转型"/>
+    <Choice value="无"/>
+  </Choices>
+
+  <!-- ========== L3 跨文化与话语层 ========== -->
+  <Header value="⑥ 文化误读类型（单选）" size="18"/>
+  <Choices name="misreading_type" toName="text">
+    <Choice value="FACTUAL_ERROR 事实错误"/>
+    <Choice value="CONTEXT_MISPLACEMENT 语境错置"/>
+    <Choice value="STEREOTYPICAL_ATTRIBUTION 刻板化归因"/>
+    <Choice value="KEY_CONTEXT_OMISSION 关键语境遗漏"/>
+    <Choice value="NO_MISREADING 无误读"/>
+    <Choice value="CANNOT_DETERMINE 无法判断"/>
+  </Choices>
+
+  <Header value="⑦ 误读证据句 / 边界案例备注（命中误读时必填）" size="16"/>
+  <TextArea name="misreading_evidence" toName="text" placeholder="抄录原文证据句（阿/英原文），可结合上方高亮" rows="3" maxSubmissions="1"/>
+
+  <Header value="⑧ 标注员备注（可空）" size="16"/>
+  <TextArea name="annotator_note" toName="text" placeholder="方言词、存疑点、手册漏洞反馈…" rows="2"/>
+</View>

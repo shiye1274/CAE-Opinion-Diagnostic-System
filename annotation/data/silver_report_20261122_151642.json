@@ -1,0 +1,21 @@
+{
+  "items": 30,
+  "ok": 17,
+  "failed": 13,
+  "model_a": "qwen-plus",
+  "model_b": "deepseek-v4-flash-0731",
+  "elapsed_sec": 77.0,
+  "field_agreement_mean": 0.7562,
+  "confidence_mean": 0.8147,
+  "accepted_silver": 9,
+  "acceptance_rate": 0.5294,
+  "review_needed": 8,
+  "agree_brand_matrix": 0.7059,
+  "agree_role_type": 0.9412,
+  "agree_referent_level": 0.7647,
+  "agree_primary_frame": 0.7647,
+  "agree_sentiment_5scale": 0.8235,
+  "agree_aspect_category": 0.4118,
+  "agree_misreading_type": 0.8824,
+  "plan_gate_auto_accept_ge_0.85_conf": true
+}

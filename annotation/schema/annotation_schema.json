@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GreenSilk 标注记录规范 v1.0（JSON + metadata 权威格式）",
+  "description": "人工金标准(HUMAN_GOLD)与LLM银标准(LLM_SILVER)共用同一schema；Label Studio 仅作采集界面，导出后统一转换为本格式入库。",
+  "type": "object",
+  "required": ["doc_id", "text", "metadata", "annotations", "annotation_meta"],
+  "properties": {
+    "doc_id": { "type": "string", "description": "语料主键（与 corpus_documents 对齐）" },
+    "text": { "type": "string", "description": "被标注文本（正文或评论）" },
+    "metadata": {
+      "type": "object",
+      "required": ["language", "source_id"],
+      "properties": {
+        "language": { "enum": ["ar", "en", "zh"] },
+        "lang_variant": { "enum": ["MSA", "Khaliji", "Arabizi", "EN", "ZH", null] },
+        "country": { "type": ["string", "null"], "description": "ISO2：SA/AE/QA/KW/OM/BH/EG/JO" },
+        "source_id": { "type": "string", "description": "采集源ID（sources.yaml）" },
+        "layer": { "enum": ["L1", "L2", "L3", "L4", "L5", null] },
+        "content_type": { "enum": ["article", "comment", "subtitle", "video_meta", null] },
+        "url": { "type": ["string", "null"] },
+        "published": { "type": ["string", "null"] },
+        "sha256": { "type": ["string", "null"] },
+        "word_count": { "type": ["integer", "null"] }
+      }
+    },
+    "annotations": {
+      "type": "object",
+      "description": "双盲标：{annotator_id: 标签集}；仲裁后加 final 键",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["primary_frame", "sentiment_5scale", "misreading_type"],
+        "properties": {
+          "brand_matrix": { "type": "array", "items": { "type": "string" } },
+          "role_type": { "enum": ["CORE_SUBJECT", "BENCHMARK", "PASSING_MENTION", "NOT_APPLICABLE"] },
+          "referent_level": { "enum": ["CORPORATE", "PRODUCT_BRAND", "SPECIFIC_MODEL", "INDUSTRY_CHAIN", "FINANCIAL", "INFRASTRUCTURE", "MIXED", "OTHER"] },
+          "primary_frame": { "enum": ["TECH_LEADERSHIP", "PRICE_ADVANTAGE", "SAFETY_RECALL", "AFTER_SALES", "ENVIRONMENTAL", "POLICY_GEO", "CULTURAL_CONFLICT", "MARKET_COMPETITION", "LOCALIZATION_INVEST", "LUXURY_STATUS", "OTHER"] },
+          "secondary_frame": { "type": ["string", "null"] },
+          "sentiment_5scale": { "enum": ["+2", "+1", "0", "-1", "-2"] },
+          "aspect_category": { "type": "array", "items": { "type": "string" }, "description": "12方面+3归因，见 labelstudio_config.xml" },
+          "misreading_type": { "enum": ["FACTUAL_ERROR", "CONTEXT_MISPLACEMENT", "STEREOTYPICAL_ATTRIBUTION", "KEY_CONTEXT_OMISSION", "NO_MISREADING", "CANNOT_DETERMINE"] },
+          "misreading_evidence": { "type": ["string", "null"], "description": "命中误读时必填原文证据句" },
+          "note": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "annotation_meta": {
+      "type": "object",
+      "required": ["annotator_source"],
+      "properties": {
+        "annotator_source": { "enum": ["HUMAN_GOLD", "LLM_SILVER", "VERIFIED", "ARBITER"] },
+        "round": { "enum": ["calibration", "gold", "silver", null] },
+        "model": { "type": ["string", "null"], "description": "LLM_SILVER 时记录模型名（如 qwen2.5-72b）" },
+        "confidence": { "type": ["number", "null"], "description": "LLM 预标置信度 0~1；人工为空" },
+        "agreement": { "type": ["string", "null"], "description": "kappa 轮次结论" },
+        "arbiter_note": { "type": ["string", "null"] },
+        "annotated_at": { "type": ["string", "null"] }
+      }
+    }
+  },
+  "examples": [
+    {
+      "doc_id": "doc_a1b2c3",
+      "text": "أسعار ومواصفات شانجان يوني في 2024: دليل شامل",
+      "metadata": { "language": "ar", "lang_variant": "MSA", "country": "QA", "source_id": "googlenews", "layer": "L2", "content_type": "article", "url": "https://...", "published": "2026-11-17", "sha256": "…", "word_count": 15 },
+      "annotations": {
+        "a1": { "brand_matrix": ["Changan 长安"], "role_type": "CORE_SUBJECT", "referent_level": "SPECIFIC_MODEL", "primary_frame": "MARKET_COMPETITION", "secondary_frame": null, "sentiment_5scale": "0", "aspect_category": [], "misreading_type": "NO_MISREADING", "misreading_evidence": null, "note": null },
+        "a2": { "brand_matrix": ["Changan 长安"], "role_type": "CORE_SUBJECT", "referent_level": "SPECIFIC_MODEL", "primary_frame": "MARKET_COMPETITION", "secondary_frame": null, "sentiment_5scale": "0", "aspect_category": [], "misreading_type": "NO_MISREADING", "misreading_evidence": null, "note": null }
+      },
+      "annotation_meta": { "annotator_source": "HUMAN_GOLD", "round": "calibration", "model": null, "confidence": null, "agreement": null, "arbiter_note": null, "annotated_at": "2026-11-19T10:00:00+08:00" }
+    }
+  ]
+}
