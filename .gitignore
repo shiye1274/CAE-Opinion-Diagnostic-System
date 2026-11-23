@@ -9,3 +9,5 @@ collector/audit/run_*.jsonl
 collector/audit/试采证据日志_*.csv
 collector/audit/gate_report_*.json
 .env
+
+tools/
