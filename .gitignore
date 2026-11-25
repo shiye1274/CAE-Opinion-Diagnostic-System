@@ -11,3 +11,6 @@ collector/audit/gate_report_*.json
 .env
 
 tools/
+# data packages & staging (data goes via WeChat/netdisk, not git)
+*.zip
+corpus/_incoming_*/
