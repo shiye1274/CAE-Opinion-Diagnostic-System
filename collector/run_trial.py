@@ -74,10 +74,13 @@ def main() -> None:
     queries = build_query_set(brands=args.brands)
     # wp-json 站内搜索锚点不参与语种过滤（其内容语言由正文识别，--langs ar 曾把它误滤空）
     site_all = list(queries.get("site_brands", []))
+    policy_all = list(queries.get("policy_terms", []))
     if args.langs:   # 语种定向：只保留指定语言的查询
         keep = set(args.langs)
         for k in list(queries):
             queries[k] = [q for q in queries[k] if q[1] in keep]
+        site_all = [q for q in site_all if q[1] in keep]
+        policy_all = [q for q in policy_all if q[1] in keep]
     total_q = sum(len(v) for v in queries.values())
     print(f"[queries] {total_q} 个 (品牌 × 国家 × 语言) 组合")
     if args.dry_run:
@@ -157,7 +160,7 @@ def main() -> None:
         http = HTTPSession(s["id"], rate=s.get("rate", 2.0), audit=audit)
         ad = RSSAdapter(http, store, audit, source=s)
         src_queries = [(t, s["language"], s["country"])
-                       for t, _, _ in site_all]
+                       for t, _, _ in (site_all + policy_all)]
         for rec in ad.collect(src_queries, max_per_query=args.max_per_query):
             n_saved += 1
 
@@ -168,7 +171,7 @@ def main() -> None:
         http = HTTPSession(s["id"], rate=s.get("rate", 2.0), audit=audit)
         ad = HTMLAdapter(s, http, store, audit)
         src_queries = [(t, s["language"], s["country"])
-                       for t, _, _ in site_all]
+                       for t, _, _ in policy_all]
         for rec in ad.collect(src_queries, max_per_query=args.max_per_query):
             n_saved += 1
 

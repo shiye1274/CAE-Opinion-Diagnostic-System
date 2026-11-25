@@ -1,88 +1,135 @@
 - id: vision2030
   name: Saudi Vision 2030
   layer: L1
-  language: ar
+  language: en
   country: SA
-  adapter: manual
+  adapter: html
   search_url: null
-  verify: true
-  rate: 5.0
+  verify: false
+  rate: 1.0
   channels:
   - site
-  note: 官网 PDF/HTML + OCR；政策基准线
+  config:
+    listing_url: https://www.vision2030.gov.sa/news/
+    link_selector: article a[href], .news-item a[href], h2 a[href], h3 a[href]
+    content_selector: article, .news-detail, .content, main
+    article_url_regex: /news/
+    max_pages: 3
+  note: 官网新闻室；政策基准线（二期改为 html 自动采集）
   owner: A
 - id: uae_moei
   name: UAE Ministry of Energy & Infrastructure
   layer: L1
   language: en
   country: AE
-  adapter: manual
+  adapter: html
   search_url: null
-  verify: true
-  rate: 5.0
+  verify: false
+  rate: 1.0
   channels:
   - site
-  note: 愿景与基建政策
+  config:
+    listing_url: https://www.moei.gov.ae/en/media/news.aspx
+    link_selector: article a[href], .news-item a[href], h2 a[href], h3 a[href]
+    content_selector: article, .news-detail, .content, main
+    article_url_regex: /news\.aspx|/media/
+    max_pages: 3
+  note: 愿景与基建政策（二期改为 html 自动采集）
   owner: A
 - id: saso
   name: 沙特标准局 SASO（EV 准入标准）
   layer: L1
   language: ar
   country: SA
-  adapter: manual
+  adapter: html
   search_url: null
-  verify: true
-  rate: 5.0
+  verify: false
+  rate: 1.0
   channels:
   - site
+  config:
+    listing_url: https://www.saso.gov.sa/ar/mediacenter/news/Pages/default.aspx
+    link_selector: article a[href], .news-item a[href], h2 a[href], h3 a[href]
+    content_selector: article, .news-detail, .content, main
+    article_url_regex: /news/
+    max_pages: 3
+  note: EV 准入标准（二期改为 html 自动采集）
   owner: A
 - id: kahramaa
   name: 卡塔尔 Kahramaa (Tarsheed)
   layer: L1
   language: en
   country: QA
-  adapter: manual
+  adapter: html
   search_url: null
-  verify: true
-  rate: 5.0
+  verify: false
+  rate: 1.0
   channels:
   - site
+  config:
+    listing_url: https://www.km.qa/en/media-center/news
+    link_selector: article a[href], .news-item a[href], h2 a[href], h3 a[href]
+    content_selector: article, .news-detail, .content, main
+    article_url_regex: /news/
+    max_pages: 3
+  note: 卡塔尔能源可持续（二期改为 html 自动采集）
   owner: A
 - id: kapsarc
   name: KAPSARC 能源智库
   layer: L1
   language: en
   country: SA
-  adapter: manual
+  adapter: html
   search_url: null
-  verify: true
-  rate: 5.0
+  verify: false
+  rate: 1.0
   channels:
   - site
+  config:
+    listing_url: https://www.kapsarc.org/publications/
+    link_selector: article a[href], .publication a[href], h2 a[href], h3 a[href]
+    content_selector: article, .entry-content, .content, main
+    article_url_regex: /publication/
+    max_pages: 3
+  note: 能源转型与交通电动化研究（二期改为 html 自动采集）
   owner: A
 - id: agsiw
   name: AGSIW 海湾智库
   layer: L1
   language: en
   country: US
-  adapter: manual
+  adapter: html
   search_url: null
-  verify: true
-  rate: 5.0
+  verify: false
+  rate: 1.0
   channels:
   - site
+  config:
+    listing_url: https://agsiw.org/category/analysis/
+    link_selector: article a[href], .post a[href], h2 a[href], h3 a[href]
+    content_selector: article, .entry-content, .content, main
+    article_url_regex: /\d{4}/\d{2}/
+    max_pages: 3
+  note: 海湾政治经济分析（二期改为 html 自动采集）
   owner: A
 - id: carnegie_me
   name: Carnegie Middle East
   layer: L1
   language: en
   country: LB
-  adapter: manual
+  adapter: html
   search_url: null
-  verify: true
-  rate: 5.0
+  verify: false
+  rate: 1.0
   channels:
   - site
+  config:
+    listing_url: https://carnegie-mec.org/research/
+    link_selector: article a[href], .publication a[href], h2 a[href], h3 a[href]
+    content_selector: article, .entry-content, .content, main
+    article_url_regex: /\d{4}/\d{2}/
+    max_pages: 3
+  note: 中东政策分析（二期改为 html 自动采集）
   owner: A
 - id: alarabiya_ar
   name: Al Arabiya العربية
@@ -297,16 +344,22 @@
   layer: L2
   language: en
   country: AE
-  adapter: site_search
-  search_url: null
+  adapter: playwright
+  search_url: https://www.arabianbusiness.com/search?q={q}
   verify: false
-  rate: 2.0
+  rate: 1.0
   channels:
-  - gdelt
-  - google_news
-  owner: B
-  note: NEEDS_BROWSER：需浏览器渲染，二期 Playwright
+  - site
+  config:
+    link_selector: article a[href], .search-result a[href], h2 a[href], h3 a[href]
+    content_selector: article, .article-content, .content, main
+    article_url_regex: /[\w-]+-\d+$
+    max_pages: 3
+    timeout: 30000
+    headless: true
+  note: NEEDS_BROWSER：二期 Playwright；search_url 待 B 验证
   verified_by: member_B
+  owner: B
 - id: arabnews
   name: Arab News
   layer: L2
@@ -420,76 +473,106 @@
   layer: L3
   language: ar
   country: SA
-  adapter: site_search
-  search_url: null
+  adapter: playwright
+  search_url: https://saudishift.com/?s={q}
   verify: false
-  rate: 2.0
+  rate: 1.0
   channels:
   - site
-  - google_news
-  owner: B
-  note: NEEDS_BROWSER：同上
+  config:
+    link_selector: article a[href], .post a[href], h2 a[href], h3 a[href]
+    content_selector: article, .entry-content, .content, main
+    article_url_regex: /\d{4}/\d{2}/
+    max_pages: 3
+    timeout: 30000
+    headless: true
+  note: NEEDS_BROWSER：二期 Playwright；/?s= 待 B 验证
   verified_by: member_B
+  owner: B
 - id: striveme
   name: StriveME
   layer: L3
   language: ar
   country: SA
-  adapter: site_search
-  search_url: null
+  adapter: playwright
+  search_url: https://striveme.com/search?q={q}
   verify: false
-  rate: 2.0
+  rate: 1.0
   channels:
   - site
-  - google_news
-  owner: B
-  note: NEEDS_BROWSER：同上
+  config:
+    link_selector: article a[href], .post a[href], h2 a[href], h3 a[href]
+    content_selector: article, .entry-content, .content, main
+    article_url_regex: /\d{4}/\d{2}/
+    max_pages: 3
+    timeout: 30000
+    headless: true
+  note: NEEDS_BROWSER：二期 Playwright；search_url 待 B 验证
   verified_by: member_B
+  owner: B
 - id: moterat
   name: Moterat متمردون
   layer: L3
   language: ar
   country: SA
-  adapter: site_search
-  search_url: null
+  adapter: playwright
+  search_url: https://www.moterat.com/?s={q}
   verify: false
-  rate: 2.0
+  rate: 1.0
   channels:
   - site
-  - google_news
-  owner: B
-  note: NEEDS_BROWSER：同上
+  config:
+    link_selector: article a[href], .post a[href], h2 a[href], h3 a[href]
+    content_selector: article, .entry-content, .content, main
+    article_url_regex: /\d{4}/\d{2}/
+    max_pages: 3
+    timeout: 30000
+    headless: true
+  note: NEEDS_BROWSER：二期 Playwright；search_url 待 B 验证
   verified_by: member_B
+  owner: B
 - id: drivearabia
   name: DriveArabia
   layer: L3
   language: en
   country: AE
-  adapter: site_search
-  search_url: null
+  adapter: playwright
+  search_url: https://drivearabia.com/?s={q}
   verify: false
-  rate: 2.0
+  rate: 1.0
   channels:
   - site
-  - google_news
-  owner: B
-  note: NEEDS_BROWSER：同上
+  config:
+    link_selector: article a[href], .post a[href], h2 a[href], h3 a[href]
+    content_selector: article, .entry-content, .content, main
+    article_url_regex: /\d{4}/\d{2}/
+    max_pages: 3
+    timeout: 30000
+    headless: true
+  note: NEEDS_BROWSER：二期 Playwright；search_url 待 B 验证
   verified_by: member_B
+  owner: B
 - id: yallamotor
   name: YallaMotor
   layer: L3
   language: en
   country: AE
-  adapter: site_search
-  search_url: null
+  adapter: playwright
+  search_url: https://uae.yallamotor.com/search?q={q}
   verify: false
-  rate: 2.0
+  rate: 1.0
   channels:
   - site
-  - google_news
-  owner: B
-  note: NEEDS_BROWSER：同上
+  config:
+    link_selector: article a[href], .post a[href], h2 a[href], h3 a[href]
+    content_selector: article, .entry-content, .content, main
+    article_url_regex: /[\w-]+-\d+$
+    max_pages: 3
+    timeout: 30000
+    headless: true
+  note: NEEDS_BROWSER：二期 Playwright；search_url 待 B 验证
   verified_by: member_B
+  owner: B
 - id: carswitch
   name: CarSwitch 评测专栏
   layer: L3
@@ -672,4 +755,217 @@
   rate: 0
   channels: []
   note: 官方 API 收费；一期不强依赖，二期视预算接入
+  owner: A
+
+# ========== 二期新增：中文源 ==========
+- id: xinhua_world
+  name: 新华网-国际
+  layer: L2
+  language: zh
+  country: CN
+  adapter: rss
+  search_url: null
+  verify: false
+  rate: 1.0
+  channels:
+  - site
+  config:
+    feed_urls:
+    - http://xinhuanet.com/world/news_world.xml
+    - http://xinhuanet.com/auto/news_auto.xml
+  note: 中文 L2 主力；含国际+汽车两个 RSS
+  owner: B
+- id: people_auto
+  name: 人民网-汽车
+  layer: L2
+  language: zh
+  country: CN
+  adapter: rss
+  search_url: null
+  verify: false
+  rate: 1.0
+  channels:
+  - site
+  config:
+    feed_urls:
+    - http://auto.people.com.cn/rss/
+  note: 中文 L2；RSS URL 待 B 验证
+  owner: B
+- id: chinadaily_cn
+  name: 中国日报中文网
+  layer: L2
+  language: zh
+  country: CN
+  adapter: rss
+  search_url: null
+  verify: false
+  rate: 1.0
+  channels:
+  - site
+  config:
+    feed_urls:
+    - http://www.chinadaily.com.cn/rss/world_rss.xml
+  note: 中英混合；正文识别语种
+  owner: B
+- id: chinanews_auto
+  name: 中新网汽车
+  layer: L2
+  language: zh
+  country: CN
+  adapter: rss
+  search_url: null
+  verify: false
+  rate: 1.0
+  channels:
+  - site
+  config:
+    feed_urls:
+    - http://www.chinanews.com.cn/rss/scroll-news.xml
+  note: 中文 L2；按品牌+中东关键词过滤标题/摘要
+  owner: B
+- id: autohome_news
+  name: 汽车之家-新闻
+  layer: L3
+  language: zh
+  country: CN
+  adapter: html
+  search_url: https://www.autohome.com.cn/search?keyword={q}
+  verify: false
+  rate: 1.0
+  channels:
+  - site
+  config:
+    link_selector: article a[href], .post a[href], h2 a[href], h3 a[href]
+    content_selector: article, .entry-content, .content, main
+    article_url_regex: /article/\d+
+    max_pages: 2
+  note: 中文 L3 垂直媒体；搜索页与正文 selector 待 B 验证
+  owner: B
+- id: yiche_news
+  name: 易车-新闻
+  layer: L3
+  language: zh
+  country: CN
+  adapter: html
+  search_url: https://www.yiche.com/search?keyword={q}
+  verify: false
+  rate: 1.0
+  channels:
+  - site
+  config:
+    link_selector: article a[href], .post a[href], h2 a[href], h3 a[href]
+    content_selector: article, .entry-content, .content, main
+    article_url_regex: /news/\d+
+    max_pages: 2
+  note: 中文 L3 垂直媒体；待 B 验证
+  owner: B
+
+# ========== 二期新增：L1 政策层 ==========
+- id: spa_en
+  name: Saudi Press Agency English
+  layer: L1
+  language: en
+  country: SA
+  adapter: rss
+  search_url: null
+  verify: false
+  rate: 1.0
+  channels:
+  - site
+  config:
+    feed_urls:
+    - https://www.spa.gov.sa/rss
+  note: 沙特官方通讯社英文；RSS URL 待验证
+  owner: A
+- id: spa_ar
+  name: Saudi Press Agency Arabic
+  layer: L1
+  language: ar
+  country: SA
+  adapter: rss
+  search_url: null
+  verify: false
+  rate: 1.0
+  channels:
+  - site
+  config:
+    feed_urls:
+    - https://www.spa.gov.sa/ar/rss
+  note: 沙特官方通讯社阿语；RSS URL 待验证
+  owner: A
+- id: uae_gov
+  name: UAE Government News
+  layer: L1
+  language: en
+  country: AE
+  adapter: html
+  search_url: null
+  verify: false
+  rate: 1.0
+  channels:
+  - site
+  config:
+    listing_url: https://u.ae/en/news-and-media
+    link_selector: article a[href], .news-item a[href], h2 a[href], h3 a[href]
+    content_selector: article, .news-detail, .content, main
+    article_url_regex: /news-and-media/
+    max_pages: 3
+  note: 阿联酋政府新闻室
+  owner: A
+- id: qat_tarsheed
+  name: Qatar Tarsheed News
+  layer: L1
+  language: en
+  country: QA
+  adapter: html
+  search_url: null
+  verify: false
+  rate: 1.0
+  channels:
+  - site
+  config:
+    listing_url: https://www.km.qa/en/media-center/news
+    link_selector: article a[href], .news-item a[href], h2 a[href], h3 a[href]
+    content_selector: article, .news-detail, .content, main
+    article_url_regex: /news/
+    max_pages: 3
+  note: 卡塔尔能源可持续新闻
+  owner: A
+- id: kuwait_mew
+  name: Kuwait Ministry of Electricity & Water
+  layer: L1
+  language: en
+  country: KW
+  adapter: html
+  search_url: null
+  verify: false
+  rate: 1.0
+  channels:
+  - site
+  config:
+    listing_url: https://www.mew.gov.kw/en/news
+    link_selector: article a[href], .news-item a[href], h2 a[href], h3 a[href]
+    content_selector: article, .news-detail, .content, main
+    article_url_regex: /news/
+    max_pages: 3
+  note: 科威特水电部新闻
+  owner: A
+- id: bahrain_edb
+  name: Bahrain EDB Sustainable Energy
+  layer: L1
+  language: en
+  country: BH
+  adapter: html
+  search_url: null
+  verify: false
+  rate: 1.0
+  channels:
+  - site
+  config:
+    listing_url: https://www.bahrainedb.com/news
+    link_selector: article a[href], .news-item a[href], h2 a[href], h3 a[href]
+    content_selector: article, .news-detail, .content, main
+    article_url_regex: /news/
+    max_pages: 3
+  note: 巴林经济发展局新闻
   owner: A

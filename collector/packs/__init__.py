@@ -25,6 +25,24 @@ PACKS_DIR = Path(__file__).resolve().parent
 # --brands 参数可覆盖；--brands all 跑全部。
 DEFAULT_BRANDS = ["byd", "nio", "xpeng", "jetour", "mg", "tesla", "lucid"]
 
+# L1 政策层主题词（中/英/阿），不绑定品牌，用于政府门户与智库 RSS/HTML 源
+POLICY_TERMS = {
+    "zh": [
+        "沙特 2030 愿景", "阿联酋 电动车政策", "海湾 电动汽车",
+        "中东 可持续交通", "中国汽车 中东投资", "海湾 新能源",
+        "卡塔尔 能源转型", "科威特 交通规划",
+    ],
+    "en": [
+        "Vision 2030", "electric vehicle strategy", "Saudi EV",
+        "UAE EV", "transport strategy", "automotive standards",
+        "Chinese investment", "Gulf sustainability",
+    ],
+    "ar": [
+        "رؤية 2030", "السيارات الكهربائية", "استراتيجية النقل",
+        "معايير السيارات", "الاستدامة", "الشركات الصينية",
+    ],
+}
+
 
 def load_packs() -> dict:
     import yaml
@@ -59,7 +77,7 @@ def build_query_set(brands: Optional[List[str]] = None,
 
     out: Dict[str, List[Tuple[str, str, str]]] = {
         "gdelt": [], "google_news": [], "site": [], "site_brands": [],
-        "reddit": [], "youtube": [],
+        "reddit": [], "youtube": [], "policy_terms": [],
     }
 
     for b in sel:
@@ -116,6 +134,22 @@ def build_query_set(brands: Optional[List[str]] = None,
         for t in (qs.get("ar") or qs.get("en") or [])[:1]:
             for ctx_t in ar_ctx[:3]:
                 out["youtube"].append((f"{t} {ctx_t}", "ar", "GCC"))
+
+        # --- 中文源：品牌中文名 × 中东场景词（补中文层） ---
+        zh_terms = (qs.get("zh") or [])[:2]
+        ctx_zh = [c for ctx in packs["context"][:6]
+                  for c in (ctx["queries"].get("zh") or [])[:1]]
+        for t in zh_terms:
+            for ctx_t in ctx_zh[:3]:
+                out["site_brands"].append((f"{t} {ctx_t}", "zh", "CN"))
+            out["google_news"].append((f"{t} 中东", "zh", "CN"))
+            out["google_news"].append((f"{t} 沙特", "zh", "CN"))
+            out["google_news"].append((f"{t} 阿联酋", "zh", "CN"))
+
+    # --- L1 政策层主题查询（不绑定品牌） ---
+    for lang, terms in POLICY_TERMS.items():
+        for term in terms:
+            out["policy_terms"].append((term, lang, "GCC"))
 
     # 去重保序
     for k in out:
