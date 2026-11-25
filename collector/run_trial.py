@@ -35,6 +35,8 @@ from adapters.gdelt_adapter import GDELTAdapter            # noqa: E402
 from adapters.rss_adapter import RSSAdapter                # noqa: E402
 from adapters.site_search import SiteSearchAdapter         # noqa: E402
 from adapters.wpjson_adapter import WPJsonAdapter          # noqa: E402
+from adapters.playwright_adapter import PlaywrightAdapter  # noqa: E402
+from adapters.html_adapter import HTMLAdapter              # noqa: E402
 from adapters.reddit_api import RedditAdapter              # noqa: E402
 from adapters.yt_dlp_adapter import YTDLPSearchAdapter     # noqa: E402
 from packs import build_query_set, load_packs              # noqa: E402
@@ -70,6 +72,8 @@ def main() -> None:
     print(f"[sources] enabled = {len(enabled)}")
 
     queries = build_query_set(brands=args.brands)
+    # wp-json 站内搜索锚点不参与语种过滤（其内容语言由正文识别，--langs ar 曾把它误滤空）
+    site_all = list(queries.get("site_brands", []))
     if args.langs:   # 语种定向：只保留指定语言的查询
         keep = set(args.langs)
         for k in list(queries):
@@ -131,7 +135,40 @@ def main() -> None:
         http = HTTPSession(s["id"], rate=s.get("rate", 2.0), audit=audit)
         ad = WPJsonAdapter(s, http, store, audit)
         src_queries = [(t, s["language"], s["country"])
-                       for t, _, _ in queries.get("site_brands", [])]
+                       for t, _, _ in site_all]   # 不受 --langs 过滤（语言由正文识别）
+        for rec in ad.collect(src_queries, max_per_query=args.max_per_query):
+            n_saved += 1
+
+    # ---- 通道 3c：Playwright 浏览器渲染（NEEDS_BROWSER 源）----
+    for s in enabled:
+        if s.get("adapter") != "playwright":
+            continue
+        http = HTTPSession(s["id"], rate=s.get("rate", 2.0), audit=audit)
+        ad = PlaywrightAdapter(s, http, store, audit)
+        src_queries = [(t, s["language"], s["country"])
+                       for t, _, _ in site_all]
+        for rec in ad.collect(src_queries, max_per_query=args.max_per_query):
+            n_saved += 1
+
+    # ---- 通道 3d：源直采 RSS/Atom（中文源 / L1 新闻室等）----
+    for s in enabled:
+        if s.get("adapter") != "rss":
+            continue
+        http = HTTPSession(s["id"], rate=s.get("rate", 2.0), audit=audit)
+        ad = RSSAdapter(http, store, audit, source=s)
+        src_queries = [(t, s["language"], s["country"])
+                       for t, _, _ in site_all]
+        for rec in ad.collect(src_queries, max_per_query=args.max_per_query):
+            n_saved += 1
+
+    # ---- 通道 3e：轻量 HTML 列表解析（L1 政策门户兜底）----
+    for s in enabled:
+        if s.get("adapter") != "html":
+            continue
+        http = HTTPSession(s["id"], rate=s.get("rate", 2.0), audit=audit)
+        ad = HTMLAdapter(s, http, store, audit)
+        src_queries = [(t, s["language"], s["country"])
+                       for t, _, _ in site_all]
         for rec in ad.collect(src_queries, max_per_query=args.max_per_query):
             n_saved += 1
 
@@ -171,7 +208,7 @@ def main() -> None:
                         n_saved += 1
                 except Exception:  # noqa: BLE001
                     continue
-            api.collect_comments([v for v, _ in video_ids[:5]], max_per_video=60)
+            api.collect_comments([v for v, _ in video_ids[:10]], max_per_video=60)
         else:
             # API 不可用 / 非频道源 → 原 yt-dlp 通道（含熔断）
             for rec in ad.collect(queries.get("youtube", []),

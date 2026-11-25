@@ -537,7 +537,7 @@
   config:
     mode: channel
     handle: '@ArabGT'
-    max_videos: 10
+    max_videos: 30
   note: handle 试采期核验
   owner: B
 - id: yt_channel_suhaib
@@ -570,7 +570,7 @@
   config:
     mode: channel
     handle: '@HasanKutbi'
-    max_videos: 10
+    max_videos: 30
   owner: B
 - id: yt_channel_scb
   name: Supercar Blondie
@@ -586,7 +586,7 @@
   config:
     mode: channel
     handle: '@supercarblondie'
-    max_videos: 10
+    max_videos: 30
   owner: B
 - id: reddit_dubai
   name: r/dubai
