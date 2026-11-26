@@ -10,4 +10,5 @@ from .reddit_api import RedditAdapter        # noqa: F401
 from .wpjson_adapter import WPJsonAdapter    # noqa: F401
 from .playwright_adapter import PlaywrightAdapter  # noqa: F401
 from .html_adapter import HTMLAdapter          # noqa: F401
+from .sitemap_adapter import SitemapAdapter    # noqa: F401
 from .wayback import wayback_available, wayback_fetch  # noqa: F401

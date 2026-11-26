@@ -37,6 +37,7 @@ from adapters.site_search import SiteSearchAdapter         # noqa: E402
 from adapters.wpjson_adapter import WPJsonAdapter          # noqa: E402
 from adapters.playwright_adapter import PlaywrightAdapter  # noqa: E402
 from adapters.html_adapter import HTMLAdapter              # noqa: E402
+from adapters.sitemap_adapter import SitemapAdapter        # noqa: E402
 from adapters.reddit_api import RedditAdapter              # noqa: E402
 from adapters.yt_dlp_adapter import YTDLPSearchAdapter     # noqa: E402
 from packs import build_query_set, load_packs              # noqa: E402
@@ -173,6 +174,15 @@ def main() -> None:
         src_queries = [(t, s["language"], s["country"])
                        for t, _, _ in policy_all]
         for rec in ad.collect(src_queries, max_per_query=args.max_per_query):
+            n_saved += 1
+
+    # ---- 通道 3f：Sitemap 直采（L1 最稳通道，绕开站内搜索/JS 列表页）----
+    for s in enabled:
+        if s.get("adapter") != "sitemap":
+            continue
+        http = HTTPSession(s["id"], rate=s.get("rate", 1.0), audit=audit)
+        ad = SitemapAdapter(s, http, store, audit)
+        for rec in ad.collect([], max_per_query=args.max_per_query):
             n_saved += 1
 
     # ---- 通道 4：Reddit UGC（被墙域 → 走代理）----
