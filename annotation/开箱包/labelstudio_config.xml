@@ -1,8 +1,14 @@
 <View>
-  <!-- GreenSilk-MENA 标注配置 v1.1（对应规划文档表 4-1 三层 28 维的核心子集）
-       v1.1 变更：移除无效的 visibleWhen 属性（部分 LS 版本导致保存校验失败、界面字段残缺）
+  <!-- GreenSilk-MENA 标注配置 v2.2（对应规划文档表 4-1 三层 28 维的核心子集）
        导入方式：Label Studio → Settings → Labeling Interface → Code → 粘贴本文件 → Save
-       预期：右侧面板应显示 ①–⑧ 共 8 组字段 + 原文高亮"证据句"标签 -->
+       预期：右侧面板应显示 ①–⑨ 共 9 组字段 + 原文高亮"证据句"标签
+
+       ========== v2.2 变更（全部向后兼容，已标数据不受影响）==========
+       🆕 C1 ①品牌与角色 新增 4 个中国品牌选项：XiaoMi 小米 / GAC 广汽 /
+              SOUEAST 东南 / J.D 捷达（标注员1 实测遇到词包外品牌，只能写备注）
+       🆕 C2 新增 ⑨ 方言变体 字段（选填，前 65 条不用回补）
+       ✅ 其余 ①–⑧ 字段、选项、顺序全部不变 —— 已标注内容100% 有效
+       ================================================================ -->
 
   <Header value="$title" />
   <Text name="text" value="$text_clean" highlightColor="#FFB366" />
@@ -24,6 +30,12 @@
     <Choice value="Changan 长安"/>
     <Choice value="Haval/GWM 哈弗"/>
     <Choice value="Hongqi 红旗"/>
+    <!-- 🆕 v2.2 新增（C1）：实测遇到的词包外中国品牌 -->
+    <Choice value="XiaoMi 小米"/>
+    <Choice value="GAC 广汽"/>
+    <Choice value="SOUEAST 东南"/>
+    <Choice value="J.D 捷达"/>
+    <!-- 以下为对照/外国品牌（原有，不变） -->
     <Choice value="Tesla 特斯拉"/>
     <Choice value="Lucid"/>
     <Choice value="Ceer"/>
@@ -129,4 +141,15 @@
 
   <Header value="⑧ 标注员备注（可空）" size="16"/>
   <TextArea name="annotator_note" toName="text" placeholder="方言词、存疑点、手册漏洞反馈…" rows="2"/>
+
+  <!-- 🆕 v2.2 新增（C2）：方言变体 —— 选填，前 65 条不用回补
+       用途：创新点①「海湾方言情感计算」的人工验证集
+       与数据自带 lang_variant 字段对齐（MSA / Khaliji） -->
+  <Header value="⑨ 方言变体（选填 · 仅阿语条目标）" size="18"/>
+  <Choices name="gulf_dialect" toName="text">
+    <Choice value="MSA 标准语（无方言词）"/>
+    <Choice value="Khaliji 海湾方言（含海湾特有词/语法）"/>
+    <Choice value="MIXED 标准语+方言混合"/>
+    <Choice value="CANNOT_DETERMINE 无法判断"/>
+  </Choices>
 </View>
