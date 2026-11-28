@@ -1,0 +1,54 @@
+{
+  "samples": 57,
+  "fields": {
+    "aspect_category": {
+      "kappa": 0.2001,
+      "n": 49,
+      "gate": 0.7,
+      "pass": false
+    },
+    "brand_matrix": {
+      "kappa": 0.7136,
+      "n": 35,
+      "gate": 0.7,
+      "pass": true
+    },
+    "misreading_type": {
+      "kappa": 0.0947,
+      "n": 55,
+      "gate": 0.72,
+      "pass": false
+    },
+    "primary_frame": {
+      "kappa": 0.2995,
+      "n": 56,
+      "gate": 0.78,
+      "pass": false
+    },
+    "referent_level": {
+      "kappa": 0.5228,
+      "n": 34,
+      "gate": 0.75,
+      "pass": false
+    },
+    "role_type": {
+      "kappa": 0.7156,
+      "n": 54,
+      "gate": 0.75,
+      "pass": false
+    },
+    "secondary_frame": {
+      "kappa": 0.0968,
+      "n": 14,
+      "gate": 0.7,
+      "pass": false
+    },
+    "sentiment_5scale": {
+      "kappa": 0.318,
+      "n": 57,
+      "gate": 0.78,
+      "pass": false
+    }
+  },
+  "all_pass": false
+}

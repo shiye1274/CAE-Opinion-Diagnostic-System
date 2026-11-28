@@ -1,0 +1,42 @@
+{
+  "silver_file": "D:\\桌面\\语料库论文\\annotation\\data\\silver_20261122_152144.jsonl",
+  "n_common": 65,
+  "macro_f1_core": 0.0,
+  "gate": 0.8,
+  "pass": false,
+  "per_field": {
+    "role_type": {
+      "macro_f1": 0.0,
+      "n": 64,
+      "accuracy": 0.0
+    },
+    "referent_level": {
+      "macro_f1": 0.0,
+      "n": 42,
+      "accuracy": 0.0
+    },
+    "primary_frame": {
+      "macro_f1": 0.0,
+      "n": 64,
+      "accuracy": 0.0
+    },
+    "sentiment_5scale": {
+      "macro_f1": 0.0,
+      "n": 65,
+      "accuracy": 0.0
+    },
+    "misreading_type": {
+      "macro_f1": 0.0,
+      "n": 62,
+      "accuracy": 0.0
+    },
+    "aspect_category": {
+      "accuracy": 0.3077,
+      "n": 65
+    },
+    "brand_matrix": {
+      "accuracy": 0.1846,
+      "n": 65
+    }
+  }
+}
